@@ -14,18 +14,6 @@ export default function SearchScreen() {
           justifyContent: "flex-start",
         }}
       >
-        <Layout
-          style={{
-            display: "flex",
-            alignItems: "flex-start",
-            width: "100%",
-            marginBottom: 24,
-          }}
-        >
-          <Text style={{ marginTop: 24, fontSize: 24, fontWeight: "normal" }}>
-            Buscar
-          </Text>
-        </Layout>
         <Input
           style={{ borderRadius: 14 }}
           placeholder='Pesquise uma cidade'
