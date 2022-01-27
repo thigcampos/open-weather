@@ -17,61 +17,60 @@ type Props = {
   onPress: () => void;
 };
 
-
 export default ({ onPress }: Props): ReactElement => (
-    <TouchableOpacity
+  <TouchableOpacity
     onPress={onPress}
     activeOpacity={0.6}
+    style={{
+      top: 24,
+      padding: 16,
+      width: "100%",
+      display: "flex",
+      borderRadius: 14,
+      height: 240,
+      justifyContent: "space-between",
+      backgroundColor: "#202020",
+    }}
+  >
+    <View style={{ width: "100%", height: "10%" }}>
+      <Text style={{ fontSize: 16, fontWeight: "bold" }}>Atibaia</Text>
+    </View>
+    <View
       style={{
-        top: 24,
-        padding: 16,
         width: "100%",
+        height: "50%",
         display: "flex",
-        borderRadius: 14,
-        height: 240,
+        flexDirection: "row",
         justifyContent: "space-between",
-        backgroundColor: "#202020",
+        alignItems: "center",
       }}
     >
-      <View style={{ width: "100%", height: "10%" }}>
-        <Text style={{ fontSize: 16, fontWeight: "bold" }}>Atibaia</Text>
+      <Text style={{ fontSize: 64, fontWeight: "bold" }}>25</Text>
+      <Image
+        style={{ width: 125, height: 95 }}
+        source={require("../../../assets/cloudly.png")}
+      />
+    </View>
+    <View
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        width: "100%",
+        justifyContent: "space-between",
+      }}
+    >
+      <View style={{ alignItems: "center" }}>
+        <MiniTitle>Tomorrow</MiniTitle>
+        <MiniImage source={require("../../../assets/cloudly.png")} />
       </View>
-      <View
-        style={{
-          width: "100%",
-          height: "50%",
-          display: "flex",
-          flexDirection: "row",
-          justifyContent: "space-between",
-          alignItems: "center",
-        }}
-      >
-        <Text style={{ fontSize: 64, fontWeight: "bold" }}>25</Text>
-        <Image
-          style={{ width: 125, height: 95 }}
-          source={require("../../../assets/cloudly.png")}
-        />
+      <View style={{ alignItems: "center" }}>
+        <MiniTitle>Monday</MiniTitle>
+        <MiniImage source={require("../../../assets/rainy.png")} />
       </View>
-      <View
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          width: "100%",
-          justifyContent: "space-between",
-        }}
-      >
-        <View style={{ alignItems: "center" }}>
-          <MiniTitle>Tomorrow</MiniTitle>
-          <MiniImage source={require("../../../assets/cloudly.png")} />
-        </View>
-        <View style={{ alignItems: "center" }}>
-          <MiniTitle>Monday</MiniTitle>
-          <MiniImage source={require("../../../assets/rainy.png")} />
-        </View>
-        <View style={{ alignItems: "center" }}>
-          <MiniTitle>Tuesday</MiniTitle>
-          <MiniImage source={require("../../../assets/sunny.png")} />
-        </View>
+      <View style={{ alignItems: "center" }}>
+        <MiniTitle>Tuesday</MiniTitle>
+        <MiniImage source={require("../../../assets/sunny.png")} />
       </View>
-    </TouchableOpacity>
-  );
+    </View>
+  </TouchableOpacity>
+);
