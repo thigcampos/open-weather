@@ -1,5 +1,4 @@
 import {
-  CityScreen,
   HomeScreen,
   SearchScreen,
   SettingsScreen,
@@ -12,8 +11,7 @@ import { Button, Icon } from "@ui-kitten/components";
 const { Navigator, Screen } =
   createBottomTabNavigator<BottomTabNavigatorParamList>();
 
-export default function BottomTabNavigator() {
-  return (
+export default () => (
     <Navigator
       initialRouteName='Home'
       screenOptions={{
@@ -73,17 +71,7 @@ export default function BottomTabNavigator() {
         name='Search'
         component={SearchScreen}
         options={{
-          headerShown: false,
-          tabBarIcon: ({ color, size }: TabBarIcon) => (
-            <SearchIcon fill={color} width={size} height={size} />
-          ),
-        }}
-      />
-      <Screen
-        name='Settings'
-        component={CityScreen}
-        options={{
-          headerTitle: "Barcelona",
+          headerTitle: "Buscar",
           headerTitleStyle: {
             color: "#fff",
           },
@@ -92,37 +80,28 @@ export default function BottomTabNavigator() {
             shadowColor: "transparent",
             borderColor: "transparent",
           },
-          headerRight: () => (
-            <Button
-              onPress={() => alert("This is a button!")}
-              style={{ backgroundColor: "#0f0f0f", borderColor: "transparent" }}
-            >
-              <Icon
-                fill='#fff'
-                height='32px'
-                width='24px'
-                name='heart-outline'
-              />
-            </Button>
+          tabBarIcon: ({ color, size }: TabBarIcon) => (
+            <SearchIcon fill={color} width={size} height={size} />
           ),
-          headerLeft: () => (
-            <Button
-              onPress={() => alert("This is a button!")}
-              style={{ backgroundColor: "#0f0f0f", borderColor: "transparent" }}
-            >
-              <Icon
-                fill='#fff'
-                height='32px'
-                width='24px'
-                name='arrow-back-outline'
-              />
-            </Button>
-          ),
+        }}
+      />
+      <Screen
+        name='Settings'
+        component={SettingsScreen}
+        options={{
+          headerTitle: "Configuracoes",
+          headerTitleStyle: {
+            color: "#fff",
+          },
+          headerStyle: {
+            backgroundColor: "#0f0f0f",
+            shadowColor: "transparent",
+            borderColor: "transparent",
+          },
           tabBarIcon: ({ color, size }: TabBarIcon) => (
             <SettingsIcon fill={color} width={size} height={size} />
           ),
         }}
       />
     </Navigator>
-  );
-}
+  )
