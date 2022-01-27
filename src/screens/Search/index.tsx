@@ -1,12 +1,11 @@
 import * as React from "react";
-import { Container } from "../../components";
 import { SafeAreaView } from "react-native";
-import { Text, Layout, Input } from "@ui-kitten/components";
+import { Layout, Input } from "@ui-kitten/components";
 
 export default function SearchScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Container
+      <Layout
         style={{
           flex: 1,
           padding: 24,
@@ -19,7 +18,7 @@ export default function SearchScreen() {
           placeholder='Pesquise uma cidade'
           size='large'
         />
-      </Container>
+      </Layout>
     </SafeAreaView>
   );
 }

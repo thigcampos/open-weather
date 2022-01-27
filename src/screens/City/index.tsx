@@ -1,5 +1,4 @@
 import * as React from "react";
-import { Container, MainCard, MiniCard } from "../../components";
 import { SafeAreaView, View, Image } from "react-native";
 import { Text, Layout, Icon } from "@ui-kitten/components";
 import styled from "styled-components";
@@ -12,7 +11,7 @@ const MiniTitle = styled(Text)`
 export default function CityScreen() {
   return (
     <SafeAreaView style={{ flex: 1 }}>
-      <Container
+      <Layout
         style={{
           flex: 1,
           padding: 24,
@@ -76,7 +75,7 @@ export default function CityScreen() {
             <MiniTitle>Chuva</MiniTitle>
           </View>
         </View>
-      </Container>
+      </Layout>
     </SafeAreaView>
   );
 }
