@@ -9,6 +9,7 @@ type Props = {
 
 export default ({ onPress }: Props): ReactElement => (
     <TouchableOpacity
+    activeOpacity={0.6}
     onPress={onPress}
       style={{
         top: 24,
