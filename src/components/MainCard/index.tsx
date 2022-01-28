@@ -1,7 +1,9 @@
 import React, { ReactElement } from "react";
-import { Icon, Text } from "@ui-kitten/components";
+import { Text } from "@ui-kitten/components";
 import { View, Image, TouchableOpacity } from "react-native";
 import styled from "styled-components";
+import { CardProps } from "../components.types";
+import { WeatherImage } from "../../utils";
 
 const MiniTitle = styled(Text)`
   font-size: 10px;
@@ -13,16 +15,14 @@ const MiniImage = styled(Image)`
   height: 44px;
 `;
 
-type Props = {
-  onPress: () => void;
-};
 
-export default ({ onPress }: Props): ReactElement => (
+
+export default ({ onPress, temperature, imageCode }: CardProps): ReactElement => {
+  return (
   <TouchableOpacity
     onPress={onPress}
     activeOpacity={0.6}
     style={{
-      top: 24,
       padding: 16,
       width: "100%",
       display: "flex",
@@ -45,11 +45,10 @@ export default ({ onPress }: Props): ReactElement => (
         alignItems: "center",
       }}
     >
-      <Text style={{ fontSize: 64, fontWeight: "bold" }}>25</Text>
-      <Image
-        style={{ width: 125, height: 95 }}
-        source={require("../../../assets/cloudly.png")}
-      />
+      <Text style={{ fontSize: 64, fontWeight: "bold" }}>
+        {Math.ceil(temperature)}
+      </Text>
+      <WeatherImage code={imageCode} size={2}/>
     </View>
     <View
       style={{
@@ -61,16 +60,17 @@ export default ({ onPress }: Props): ReactElement => (
     >
       <View style={{ alignItems: "center" }}>
         <MiniTitle>Tomorrow</MiniTitle>
-        <MiniImage source={require("../../../assets/cloudly.png")} />
+          <WeatherImage code={imageCode} size={1}/>
       </View>
       <View style={{ alignItems: "center" }}>
         <MiniTitle>Monday</MiniTitle>
-        <MiniImage source={require("../../../assets/rainy.png")} />
+          <WeatherImage code={imageCode} size={1}/>
       </View>
       <View style={{ alignItems: "center" }}>
         <MiniTitle>Tuesday</MiniTitle>
-        <MiniImage source={require("../../../assets/sunny.png")} />
+          <WeatherImage code={imageCode} size={1}/>
       </View>
     </View>
   </TouchableOpacity>
-);
+)
+    }

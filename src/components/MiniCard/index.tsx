@@ -11,7 +11,6 @@ export default ({ onPress }: Props): ReactElement => (
     activeOpacity={0.6}
     onPress={onPress}
     style={{
-      top: 24,
       padding: 16,
       width: "100%",
       display: "flex",
@@ -38,7 +37,7 @@ export default ({ onPress }: Props): ReactElement => (
       <Text style={{ fontSize: 22, fontWeight: "bold" }}>90</Text>
       <Image
         style={{ width: 55, height: 50 }}
-        source={require("../../../assets/sunny.png")}
+        source={require("../../../assets/01d.png")}
       />
     </View>
   </TouchableOpacity>
