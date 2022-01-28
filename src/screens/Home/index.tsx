@@ -1,4 +1,4 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useEffect, useState } from "react";
 import { MainCard, MiniCard } from "../../components";
 import { SafeAreaView } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
@@ -14,9 +14,24 @@ type HomeScreenProps = StackScreenProps<BottomTabNavigatorParamList, "Home"> &
 export default ({
   navigation: { navigate },
 }: HomeScreenProps): ReactElement => {
+  const [weather, setWeather] = useState([]);
+  const [todayWeather, setTodayWeather] = useState([]);
+
   const handleGoCity = (): void => {
     navigate("City");
   };
+
+  function getWeather() {
+    fetch(
+      `https://api.openweathermap.org/data/2.5/onecall?lat=-23.1175492&lon=-46.5567066&units=metric&appid=f65d4e5654a911b85dd9ebb23210e18a`
+    )
+      .then((resp) => {
+        return resp.json();
+      })
+      .then((data) => {
+        return setWeather(data.current), setTodayWeather(data.current?.weather[0])
+      });
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -28,9 +43,9 @@ export default ({
           justifyContent: "flex-start",
         }}
       >
-        <MainCard onPress={handleGoCity} />
-        <MiniCard onPress={handleGoCity} />
-
+        {/* @ts-ignore */}
+        <MainCard onPress={handleGoCity} temperature={weather?.temp} imageCode={todayWeather?.icon}/>
+        <MiniCard onPress={getWeather} />
         <MiniCard onPress={handleGoCity} />
       </Layout>
     </SafeAreaView>
