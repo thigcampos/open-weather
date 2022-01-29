@@ -8,7 +8,7 @@ export type BottomTabNavigatorParamList = {
 
 export type RootStackParamList = {
   City: undefined;
-  Listing: undefined;
+  EditFavorites: undefined;
   BottomTabNavigator: NavigatorScreenParams<BottomTabNavigatorParamList>;
 };
 
