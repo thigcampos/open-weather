@@ -2,7 +2,7 @@
 
 import * as React from "react";
 import * as eva from "@eva-design/eva";
-import { NavigationContainer } from "@react-navigation/native";
+import { DarkTheme, NavigationContainer } from "@react-navigation/native";
 import MainNavigator from "./src/routes";
 import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
@@ -14,7 +14,7 @@ function App() {
     <>
       <IconRegistry icons={EvaIconsPack} />
       <ApplicationProvider {...eva} theme={{ ...eva.dark, ...colors }}>
-        <NavigationContainer>
+        <NavigationContainer theme={DarkTheme}>
           <MainNavigator />
           <StatusBar style='light' />
         </NavigationContainer>
