@@ -1,11 +1,7 @@
 import { Image } from "react-native";
+import { WeatherImagesProps } from "./WeatherImages.types";
 
-type Props = {
-  code: string;
-  size: number;
-};
-
-export default function WeatherImage({ code, size }: Props) {
+export default ({ code, size }: WeatherImagesProps) => {
   let link = undefined;
   let height = 50;
   let width = 50;
@@ -90,4 +86,4 @@ export default function WeatherImage({ code, size }: Props) {
       source={link}
     />
   );
-}
+};
