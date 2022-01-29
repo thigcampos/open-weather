@@ -7,7 +7,11 @@ export type BottomTabNavigatorParamList = {
 };
 
 export type RootStackParamList = {
-  City: undefined;
+  City: {
+    name: string;
+    lat: number;
+    lon: number;
+  };
   EditFavorites: undefined;
   BottomTabNavigator: NavigatorScreenParams<BottomTabNavigatorParamList>;
 };
