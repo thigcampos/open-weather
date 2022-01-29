@@ -5,8 +5,10 @@ import { Cities } from "../../utils";
 import CityCard from "./Elements";
 
 export default () => {
-  const keyExtractor = (item: { title: string }, index: number) =>
-    `${item.title + index}`;
+  const keyExtractor = (
+    item: { name: string; country: string },
+    index: number
+  ) => `${item.name + item.country + index}`;
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Layout
@@ -20,7 +22,9 @@ export default () => {
       >
         <FlatList
           data={Cities}
-          renderItem={({ item }) => <CityCard city={item.title} />}
+          renderItem={({ item }) => (
+            <CityCard city={item.name} country={item.country} />
+          )}
           keyExtractor={keyExtractor}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ maxWidth: "100%" }}
