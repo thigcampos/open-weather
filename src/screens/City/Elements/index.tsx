@@ -1,7 +1,7 @@
 import { Layout, Text } from "@ui-kitten/components";
 import { View } from "react-native";
 import { WeatherImage } from "../../../utils";
-import { DayProps } from "./elements.types";
+import { DayProps } from "../City.types";
 
 export default function Day({ unixTime, temperature, codeImage }: DayProps) {
   const weekDays = [
@@ -37,15 +37,15 @@ export default function Day({ unixTime, temperature, codeImage }: DayProps) {
           width: "40%",
           height: "90%",
           display: "flex",
+          alignItems: "center",
           flexDirection: "row",
           justifyContent: "space-between",
-          alignItems: "center",
         }}
       >
-        <Text style={{ fontSize: 22, fontWeight: "bold" }}>
-          {Math.ceil(temperature)}
+        <Text style={{ fontSize: 22, fontWeight: "bold", margin: 0 }}>
+          {Math.ceil(temperature) + "°C"}
         </Text>
-        <WeatherImage code={codeImage} size={1} />
+        <WeatherImage code={codeImage} size={0.7} />
       </View>
     </Layout>
   );

@@ -1,5 +1,5 @@
 import React, { ReactElement } from "react";
-import { ResultCardProps } from "./ResultCard.types";
+import { ResultCardProps } from "../Search.types";
 import { Text, Icon, Button, Layout } from "@ui-kitten/components";
 import { TouchableOpacity, View } from "react-native";
 
