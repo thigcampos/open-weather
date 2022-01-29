@@ -1,11 +1,11 @@
 import React, { ReactElement, useEffect } from "react";
-import { createStackNavigator } from "@react-navigation/stack";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import BottomTabNavigator from "./BottomTabNavigator";
 import type { RootStackParamList } from "./routes.types";
-import { CityScreen } from "../screens";
+import { CityScreen, EditFavorites } from "../screens";
 import { Button, Icon } from "@ui-kitten/components";
 
-const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
+const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
 
 export default (): ReactElement => {
   return (
@@ -27,8 +27,6 @@ export default (): ReactElement => {
           },
           headerStyle: {
             backgroundColor: "#0f0f0f",
-            shadowColor: "transparent",
-            borderColor: "transparent",
           },
           headerRight: () => (
             <Button
@@ -43,19 +41,19 @@ export default (): ReactElement => {
               />
             </Button>
           ),
-          headerLeft: () => (
-            <Button
-              onPress={() => alert("This is a button!")}
-              style={{ backgroundColor: "#0f0f0f", borderColor: "transparent" }}
-            >
-              <Icon
-                fill='#fff'
-                height='32px'
-                width='24px'
-                name='arrow-back-outline'
-              />
-            </Button>
-          ),
+        }}
+      />
+      <Screen
+        name='EditFavorites'
+        component={EditFavorites}
+        options={{
+          headerTitle: "Cidades",
+          headerTitleStyle: {
+            color: "#fff",
+          },
+          headerStyle: {
+            backgroundColor: "#0f0f0f",
+          },
         }}
       />
     </Navigator>
