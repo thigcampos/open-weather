@@ -1,11 +1,11 @@
 import React, { ReactElement, useEffect } from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import BottomTabNavigator from "./BottomTabNavigator";
 import type { RootStackParamList } from "./routes.types";
 import { CityScreen, EditFavorites } from "../screens";
 import { Button, Icon } from "@ui-kitten/components";
 
-const { Navigator, Screen } = createNativeStackNavigator<RootStackParamList>();
+const { Navigator, Screen } = createStackNavigator<RootStackParamList>();
 
 export default (): ReactElement => {
   return (
@@ -21,7 +21,7 @@ export default (): ReactElement => {
         name='City'
         component={CityScreen}
         options={{
-          headerTitle: "Barcelona",
+          headerTitle: "Cidade",
           headerTitleStyle: {
             color: "#fff",
           },
