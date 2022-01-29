@@ -1,7 +1,21 @@
 import { Layout, Text } from "@ui-kitten/components";
-import { Image, View } from "react-native";
+import { View } from "react-native";
+import { WeatherImage } from "../../../utils";
+import { DayProps } from "./elements.types";
 
-export default function Day() {
+export default function Day({ unixTime, temperature, codeImage }: DayProps) {
+  const weekDays = [
+    "Domingo",
+    "Segunda",
+    "Terça",
+    "Quarta",
+    "Quinta",
+    "Sexta",
+    "Sábado",
+  ];
+  const date = new Date(unixTime * 1000).getDay();
+  const day = weekDays[date];
+
   return (
     <Layout
       style={{
@@ -17,7 +31,7 @@ export default function Day() {
         backgroundColor: "#202020",
       }}
     >
-      <Text style={{ fontSize: 14, fontWeight: "bold" }}>Segunda</Text>
+      <Text style={{ fontSize: 14, fontWeight: "bold" }}>{day}</Text>
       <View
         style={{
           width: "40%",
@@ -28,11 +42,10 @@ export default function Day() {
           alignItems: "center",
         }}
       >
-        <Text style={{ fontSize: 22, fontWeight: "bold" }}>90</Text>
-        <Image
-          style={{ width: 55, height: 50 }}
-          source={require("../../../../assets/01d.png")}
-        />
+        <Text style={{ fontSize: 22, fontWeight: "bold" }}>
+          {Math.ceil(temperature)}
+        </Text>
+        <WeatherImage code={codeImage} size={1} />
       </View>
     </Layout>
   );
