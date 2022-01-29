@@ -1,33 +1,39 @@
 type CityType = {
-  title: string;
-  latitude: number;
-  longitude: number;
+  name: string;
+  country: string;
+  lat: number;
+  lon: number;
 };
 
 export const Cities: Array<CityType> = [
   {
-    title: "Barcelona",
-    latitude: 41.3850639,
-    longitude: 2.1734035,
+    name: "Barcelona",
+    country: "ES",
+    lat: 41.3850639,
+    lon: 2.1734035,
   },
   {
-    title: "Milão",
-    latitude: 45.4654219,
-    longitude: 9.1859243,
+    name: "Milão",
+    country: "IT",
+    lat: 45.4654219,
+    lon: 9.1859243,
   },
   {
-    title: "Chicago",
-    latitude: 41.8781136,
-    longitude: -87.6297982,
+    name: "Chicago",
+    country: "US",
+    lat: 41.8781136,
+    lon: -87.6297982,
   },
   {
-    title: "Marseille",
-    latitude: 43.296482,
-    longitude: 5.36978,
+    name: "Marseille",
+    country: "FR",
+    lat: 43.296482,
+    lon: 5.36978,
   },
   {
-    title: "Bilbao",
-    latitude: 43.2630126,
-    longitude: -2.9349852,
+    name: "Bilbao",
+    country: "ES",
+    lat: 43.2630126,
+    lon: -2.9349852,
   },
 ];
