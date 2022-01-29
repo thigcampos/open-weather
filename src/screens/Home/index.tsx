@@ -1,28 +1,21 @@
 import React, { ReactElement } from "react";
-import HomeCard from "./Elements";
-import { FlatList, SafeAreaView, TouchableWithoutFeedback } from "react-native";
-import { StackScreenProps } from "@react-navigation/stack";
-import type {
-  BottomTabNavigatorParamList,
-  RootStackParamList,
-} from "../../routes/routes.types";
-import { Button, Icon, Layout, Spinner, Text } from "@ui-kitten/components";
+import { HomeCard, Empty } from "./Elements/";
+import { FlatList, SafeAreaView } from "react-native";
+import { Button, Icon, Layout, Text } from "@ui-kitten/components";
 import { Cities } from "../../utils/fakeList";
-
-type HomeScreenProps = StackScreenProps<BottomTabNavigatorParamList, "Home"> &
-  StackScreenProps<RootStackParamList>;
+import { HomeScreenProps } from "./Home.types";
 
 export default ({
   navigation: { navigate },
 }: HomeScreenProps): ReactElement => {
-  const goCity = (): void => {
-    navigate("City");
-  };
   const goEditFavorites = (): void => {
     navigate("EditFavorites");
   };
-  const keyExtractor = (item: { title: string }, index: number) =>
-    `${item.title + index}`;
+
+  const keyExtractor = (
+    item: { name: string; state: string | undefined; country: string },
+    index: number
+  ) => `${item.name + item.state + item.country + index}`;
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -60,12 +53,20 @@ export default ({
           data={Cities}
           renderItem={({ item }) => (
             <HomeCard
-              onPress={goCity}
-              city={item.title}
-              latitude={item.latitude}
-              longitude={item.longitude}
+              city={item.name}
+              country={item.country}
+              latitude={item.lat}
+              longitude={item.lon}
+              onPress={() =>
+                navigate("City", {
+                  name: item.name,
+                  lat: item.lat,
+                  lon: item.lon,
+                })
+              }
             />
           )}
+          ListEmptyComponent={<Empty />}
           keyExtractor={keyExtractor}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ maxWidth: "100%" }}
