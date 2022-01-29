@@ -1,12 +1,13 @@
-import React, { ReactElement, useEffect, useState } from "react";
-import { MainCard, MiniCard } from "../../components";
-import { SafeAreaView } from "react-native";
+import React, { ReactElement } from "react";
+import HomeCard from "./Elements";
+import { FlatList, SafeAreaView, TouchableWithoutFeedback } from "react-native";
 import { StackScreenProps } from "@react-navigation/stack";
 import type {
   BottomTabNavigatorParamList,
   RootStackParamList,
 } from "../../routes/routes.types";
-import { Layout } from "@ui-kitten/components";
+import { Button, Icon, Layout, Spinner, Text } from "@ui-kitten/components";
+import { Cities } from "../../utils/fakeList";
 
 type HomeScreenProps = StackScreenProps<BottomTabNavigatorParamList, "Home"> &
   StackScreenProps<RootStackParamList>;
@@ -14,39 +15,61 @@ type HomeScreenProps = StackScreenProps<BottomTabNavigatorParamList, "Home"> &
 export default ({
   navigation: { navigate },
 }: HomeScreenProps): ReactElement => {
-  const [weather, setWeather] = useState([]);
-  const [todayWeather, setTodayWeather] = useState([]);
-
-  const handleGoCity = (): void => {
+  const goCity = (): void => {
     navigate("City");
   };
-
-  function getWeather() {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/onecall?lat=-23.1175492&lon=-46.5567066&units=metric&appid=f65d4e5654a911b85dd9ebb23210e18a`
-    )
-      .then((resp) => {
-        return resp.json();
-      })
-      .then((data) => {
-        return setWeather(data.current), setTodayWeather(data.current?.weather[0])
-      });
-  }
+  const goEditFavorites = (): void => {
+    navigate("EditFavorites");
+  };
+  const keyExtractor = (item: { title: string }, index: number) =>
+    `${item.title + index}`;
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Layout
         style={{
           flex: 1,
-          padding: 24,
+          paddingLeft: 16,
+          paddingRight: 16,
           alignItems: "center",
           justifyContent: "flex-start",
         }}
       >
-        {/* @ts-ignore */}
-        <MainCard onPress={handleGoCity} temperature={weather?.temp} imageCode={todayWeather?.icon}/>
-        <MiniCard onPress={getWeather} />
-        <MiniCard onPress={handleGoCity} />
+        <Layout
+          style={{
+            width: "100%",
+            height: 40,
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            alignItems: "center",
+            marginTop: 40,
+            marginBottom: 8,
+          }}
+        >
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>OpenWeather</Text>
+          <Button
+            onPress={goEditFavorites}
+            appearance={"ghost"}
+            style={{ width: "10%", height: "100%" }}
+          >
+            <Icon name='edit-outline' height={32} width={32} fill={"white"} />
+          </Button>
+        </Layout>
+        <FlatList
+          data={Cities}
+          renderItem={({ item }) => (
+            <HomeCard
+              onPress={goCity}
+              city={item.title}
+              latitude={item.latitude}
+              longitude={item.longitude}
+            />
+          )}
+          keyExtractor={keyExtractor}
+          showsVerticalScrollIndicator={false}
+          contentContainerStyle={{ maxWidth: "100%" }}
+        />
       </Layout>
     </SafeAreaView>
   );
