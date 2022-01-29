@@ -2,7 +2,6 @@ import { HomeScreen, SearchScreen, SettingsScreen } from "../../screens";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import type { BottomTabNavigatorParamList, TabBarIcon } from "../routes.types";
 import { HomeIcon, SearchIcon, SettingsIcon } from "../Icons";
-import { Button, Icon } from "@ui-kitten/components";
 
 const { Navigator, Screen } =
   createBottomTabNavigator<BottomTabNavigatorParamList>();
@@ -36,23 +35,7 @@ export default () => (
       name='Home'
       component={HomeScreen}
       options={{
-        headerTitle: "ScopoWeather",
-        headerTitleStyle: {
-          color: "#fff",
-        },
-        headerStyle: {
-          backgroundColor: "#0f0f0f",
-          shadowColor: "transparent",
-          borderColor: "transparent",
-        },
-        headerRight: () => (
-          <Button
-            onPress={() => alert("This is a button!")}
-            style={{ backgroundColor: "#0f0f0f", borderColor: "transparent" }}
-          >
-            <Icon fill='#fff' height='32px' width='24px' name='edit-outline' />
-          </Button>
-        ),
+        headerShown: false,
         tabBarIcon: ({ color, size }: TabBarIcon) => (
           <HomeIcon fill={color} width={size} height={size} />
         ),
@@ -62,15 +45,7 @@ export default () => (
       name='Search'
       component={SearchScreen}
       options={{
-        headerTitle: "Buscar",
-        headerTitleStyle: {
-          color: "#fff",
-        },
-        headerStyle: {
-          backgroundColor: "#0f0f0f",
-          shadowColor: "transparent",
-          borderColor: "transparent",
-        },
+        headerShown: false,
         tabBarIcon: ({ color, size }: TabBarIcon) => (
           <SearchIcon fill={color} width={size} height={size} />
         ),
@@ -80,15 +55,7 @@ export default () => (
       name='Settings'
       component={SettingsScreen}
       options={{
-        headerTitle: "Configuracoes",
-        headerTitleStyle: {
-          color: "#fff",
-        },
-        headerStyle: {
-          backgroundColor: "#0f0f0f",
-          shadowColor: "transparent",
-          borderColor: "transparent",
-        },
+        headerShown: false,
         tabBarIcon: ({ color, size }: TabBarIcon) => (
           <SettingsIcon fill={color} width={size} height={size} />
         ),
