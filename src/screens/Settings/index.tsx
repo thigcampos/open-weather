@@ -3,7 +3,7 @@ import { Layout, Text } from "@ui-kitten/components";
 import { SafeAreaView } from "react-native";
 import Config from "./Elements";
 
-export default function SettingsScreen() {
+export default () => {
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Layout
@@ -35,4 +35,4 @@ export default function SettingsScreen() {
       </Layout>
     </SafeAreaView>
   );
-}
+};

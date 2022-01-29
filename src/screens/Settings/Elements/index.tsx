@@ -1,12 +1,8 @@
 import { ReactElement, useState } from "react";
 import { Layout, Text, Toggle } from "@ui-kitten/components";
+import { ConfigProps } from "../Settings.types";
 
-type Props = {
-  subtitle: string;
-  title: string;
-};
-
-export default function Config({ subtitle, title }: Props): ReactElement {
+export default function Config({ subtitle, title }: ConfigProps): ReactElement {
   const [checked, setChecked] = useState(false);
 
   const onCheckedChange = (isChecked: boolean) => {
