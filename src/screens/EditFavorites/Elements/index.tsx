@@ -1,11 +1,21 @@
-import { ReactElement } from "react";
+import React from "react";
 import { Layout, Text, Icon, Button } from "@ui-kitten/components";
+import { useDispatch } from "react-redux";
 import { CityCardProps } from "../EditFavorites.types";
+import { removeFavorite } from "../../../store/actions/location";
 
 export default function CityCard({
   city,
+  state,
   country,
-}: CityCardProps): ReactElement {
+  lat,
+  lon,
+}: CityCardProps) {
+  const dispatch = useDispatch();
+  function handlePress() {
+    dispatch(removeFavorite({ name: city, state, country, lat, lon }));
+  }
+
   return (
     <Layout
       style={{
@@ -24,8 +34,8 @@ export default function CityCard({
       <Text style={{ fontSize: 14, fontWeight: "bold" }}>
         {city}, {country}
       </Text>
-      <Button appearance={"ghost"}>
-        <Icon name='trash-2-outline' height={24} width={24} fill={"white"} />
+      <Button appearance='ghost' onPress={handlePress as () => void}>
+        <Icon name='trash-2-outline' height={24} width={24} fill='white' />
       </Button>
     </Layout>
   );

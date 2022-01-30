@@ -3,8 +3,3 @@ export type DayProps = {
   temperature: number;
   codeImage: string;
 };
-
-export type GetWeatherProps = {
-  lat: number;
-  lon: number;
-};

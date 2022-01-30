@@ -1,22 +1,18 @@
-import React, { ReactElement } from "react";
+import React from "react";
 import { Icon } from "@ui-kitten/components";
+import { TabBarIcon } from "../routes.types";
 
-type IconProps = {
-  fill: string;
-  width: number;
-  height: number;
-};
+function HomeIcon({ color, size }: TabBarIcon) {
+  return <Icon fill={color} width={size} height={size} name='home-outline' />;
+}
 
-const HomeIcon = (props: IconProps): ReactElement => (
-  <Icon {...props} name='home-outline' />
-);
-
-const SearchIcon = (props: IconProps): ReactElement => (
-  <Icon {...props} name='search-outline' />
-);
-
-const SettingsIcon = (props: IconProps): ReactElement => (
-  <Icon {...props} name='settings-outline' />
-);
+function SearchIcon({ color, size }: TabBarIcon) {
+  return <Icon fill={color} width={size} height={size} name='search-outline' />;
+}
+function SettingsIcon({ color, size }: TabBarIcon) {
+  return (
+    <Icon fill={color} width={size} height={size} name='settings-outline' />
+  );
+}
 
 export { HomeIcon, SearchIcon, SettingsIcon };

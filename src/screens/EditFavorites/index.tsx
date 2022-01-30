@@ -1,14 +1,19 @@
 import React from "react";
 import { Layout } from "@ui-kitten/components";
 import { FlatList, SafeAreaView } from "react-native";
-import { Cities } from "../../utils";
+import { useSelector } from "react-redux";
 import CityCard from "./Elements";
+import { SearchData } from "../../api";
+import { StoreTypes } from "../../store";
 
-export default () => {
-  const keyExtractor = (
-    item: { name: string; country: string },
-    index: number
-  ) => `${item.name + item.country + index}`;
+export default function EditFavoritesScreen() {
+  const keyExtractor = (item: SearchData, index: number) =>
+    `${item.name + item.state + item.country + index}`;
+
+  const location = useSelector<StoreTypes, SearchData>(
+    (store) => store.location.favorites
+  );
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Layout
@@ -21,9 +26,13 @@ export default () => {
         }}
       >
         <FlatList
-          data={Cities}
+          data={location}
           renderItem={({ item }) => (
-            <CityCard city={item.name} country={item.country} />
+            <CityCard
+              city={item.name}
+              state={item.state}
+              country={item.country}
+            />
           )}
           keyExtractor={keyExtractor}
           showsVerticalScrollIndicator={false}
@@ -32,4 +41,4 @@ export default () => {
       </Layout>
     </SafeAreaView>
   );
-};
+}

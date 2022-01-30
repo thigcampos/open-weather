@@ -8,7 +8,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 12,
+    ecmaVersion: "latest",
     sourceType: "module",
   },
   plugins: ["react", "@typescript-eslint"],
@@ -19,7 +19,7 @@ module.exports = {
   },
   rules: {
     "react/react-in-jsx-scope": "off",
-    "react/jsx-filename-extension": [1, { extensions: [".tsx"] }],
+    "react/jsx-filename-extension": [1, { extensions: [".tsx", ".png"] }],
     "import/extensions": "off",
     "react/jsx-props-no-spreading": "off",
     "no-use-before-define": "off",
@@ -27,5 +27,6 @@ module.exports = {
     "import/no-unresolved": "off",
     "react/jsx-fragments": "off",
     "react/no-array-index-key": "off",
+    "default-param-last": "off",
   },
 };

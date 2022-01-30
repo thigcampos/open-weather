@@ -1,8 +1,8 @@
+import { StackScreenProps } from "@react-navigation/stack";
 import {
   BottomTabNavigatorParamList,
   RootStackParamList,
 } from "../../routes/routes.types";
-import { StackScreenProps } from "@react-navigation/stack";
 
 export type SearchScreenProps = StackScreenProps<
   BottomTabNavigatorParamList,
@@ -15,4 +15,6 @@ export type ResultCardProps = {
   city: string;
   country: string;
   state: string | undefined;
+  lat: number;
+  lon: number;
 };

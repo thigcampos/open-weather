@@ -14,6 +14,6 @@ export type WeatherCardProps = {
   onPress: () => void;
   city: string;
   country: string;
-  latitude: number;
-  longitude: number;
+  lat: number;
+  lon: number;
 };

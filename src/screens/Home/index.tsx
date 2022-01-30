@@ -1,21 +1,24 @@
 import React, { ReactElement } from "react";
-import { HomeCard, Empty } from "./Elements/";
 import { FlatList, SafeAreaView } from "react-native";
 import { Button, Icon, Layout, Text } from "@ui-kitten/components";
-import { Cities } from "../../utils/fakeList";
+import { useSelector } from "react-redux";
+import { HomeCard, Empty } from "./Elements";
 import { HomeScreenProps } from "./Home.types";
+import { SearchData } from "../../api";
+import { StoreTypes } from "../../store";
 
-export default ({
+export default function HomeScreen({
   navigation: { navigate },
-}: HomeScreenProps): ReactElement => {
+}: HomeScreenProps): ReactElement {
+  const location = useSelector<StoreTypes, SearchData>(
+    (store) => store.location.favorites
+  );
   const goEditFavorites = (): void => {
     navigate("EditFavorites");
   };
 
-  const keyExtractor = (
-    item: { name: string; state: string | undefined; country: string },
-    index: number
-  ) => `${item.name + item.state + item.country + index}`;
+  const keyExtractor = (item: SearchData, index: number) =>
+    `${item.name + item.state + item.country + index}`;
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -43,20 +46,20 @@ export default ({
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>OpenWeather</Text>
           <Button
             onPress={goEditFavorites}
-            appearance={"ghost"}
+            appearance='ghost'
             style={{ width: "10%", height: "100%" }}
           >
-            <Icon name='edit-outline' height={32} width={32} fill={"white"} />
+            <Icon name='edit-outline' height={32} width={32} fill='white' />
           </Button>
         </Layout>
         <FlatList
-          data={Cities}
+          data={location}
           renderItem={({ item }) => (
             <HomeCard
               city={item.name}
               country={item.country}
-              latitude={item.lat}
-              longitude={item.lon}
+              lat={item.lat}
+              lon={item.lon}
               onPress={() =>
                 navigate("City", {
                   name: item.name,
@@ -74,4 +77,4 @@ export default ({
       </Layout>
     </SafeAreaView>
   );
-};
+}

@@ -1,21 +1,21 @@
 import { Layout, Text } from "@ui-kitten/components";
 import React from "react";
 
-export default () => {
+export default function Empty() {
   return (
     <Layout
       style={{
         flex: 1,
-        height: "100%",
-        width: "100%",
-        alignItems: "center",
+        minHeight: "90%",
         justifyContent: "center",
       }}
     >
-      <Text style={{ fontSize: 16, fontWeight: "bold", color: "gray" }}>
-        Ops... Parece que a sua lista de cidades está vazia. Pesquise e adicione
-        uma cidade à sua lista na aba de busca
+      <Text style={{ fontSize: 16, color: "gray" }}>
+        Sua lista de cidades está vazia.
+      </Text>
+      <Text style={{ fontSize: 14, color: "gray", marginTop: 8 }}>
+        Pesquise e adicione uma cidade à sua lista na aba de pesquisa
       </Text>
     </Layout>
   );
-};
+}
